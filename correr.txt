@@ -85,3 +85,10 @@ sudo systemctl restart apache2
 
 
 //fin del caso
+
+
+PARA EXCEL 
+
+//QUITAR EL ; EN GD
+//QUITAR EL ; EN ZIP
+sudo nano /etc/php/8.2/apache2/php.ini  
