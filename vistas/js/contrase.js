@@ -33,7 +33,7 @@ $(".tablacontrase").DataTable({
  
   //mostrar contras
   
-  $(".tablausuarios").on("click", ".btnenviar-contrase", function () {
+  $(".enviosusuarios").on("click", ".btnenviar-contrase", function () {
     var idContrase = $(this).attr("idContrase");
     var idnrosis = $(this).attr("idnrosis");
 
@@ -109,41 +109,4 @@ $(".tablacontrase").DataTable({
   });
   
   
-  $(".tablausuarios").on("click", ".btncrear-contraseñas", function () {
-    var idContrase = $(this).attr("idContraseee");
-    var idnrosis = $(this).attr("idnrosisss");
-
-
-    for(var i=0; i<=idnrosis;i++){
-    
-    
-
-    var datos = new FormData();
-  
-    datos.append("idContrase", idContrase);
-    datos.append(("idnsistemasait"), $(this).attr(("idnsistemasaittt"+i)));
-
-      $.ajax({
-        url: "ajax/contrase.ajax.php",
-        method: "POST",
-        data: datos,
-        cache: false,
-        contentType: false,
-        processData: false,
-        dataType: "json",
-
-        success: function (respuesta) {
-                
-          $("#idsisss"+respuesta["id_sistemasait"]).val("");
-                    
-          //respuesta["con_contrase"]
-        },
-        
-      });
-  
-    }
-
-
-
-  });
   

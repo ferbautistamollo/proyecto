@@ -31,6 +31,33 @@ include "modelo/puestos.modelo.php";
 
 include "controlador/enviar.controlador.php";
 
+require 'vendor/autoload.php';
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+use PhpOffice\PhpSpreadsheet\Worksheet\PageSetup;
+
+$spreadsheet = new Spreadsheet();
+
+$worksheet = $spreadsheet->getActiveSheet();
+
+// Obtener la configuración de página y establecer el tamaño de papel en oficio
+$pageSetup = $worksheet->getPageSetup();
+$pageSetup->setPaperSize(PageSetup::PAPERSIZE_LETTER);
+
+$spreadsheet->getActiveSheet()->setCellValue('A1', 'Nombre');
+$spreadsheet->getActiveSheet()->setCellValue('B1', 'Apellido');
+$spreadsheet->getActiveSheet()->setCellValue('C1', 'Edad');
+
+$spreadsheet->getActiveSheet()->setCellValue('A2', 'Juan');
+$spreadsheet->getActiveSheet()->setCellValue('B2', 'Pérez');
+$spreadsheet->getActiveSheet()->setCellValue('C2', '65');
+
+$spreadsheet->getActiveSheet()->setCellValue('A3', 'María');
+$spreadsheet->getActiveSheet()->setCellValue('B3', 'González');
+$spreadsheet->getActiveSheet()->setCellValue('C3', '90');
+
+$writer = new Xlsx($spreadsheet);
+$writer->save('archivo.xlsx');
 
 
 $plantilla = new controladorplantilla();
